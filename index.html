@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.appcache">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaXVerse | GoldHen PS4 13.02 - 13.52</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; min-height:100%;
+               background:linear-gradient(180deg,#03060d 0%,#06111f 55%,#03060d 100%);
+               background-attachment:fixed; color:#c8ced8;
+               font:15px/1.45 "Segoe UI", system-ui, sans-serif; }
+  /* ===== FONDO GALAXIA: estrellas estáticas (muy ligeras) ===== */
+  body::after{
+    content:"";
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(1.8px 1.8px at 22px 32px,   rgba(255,255,255,.85), transparent 55%),
+      radial-gradient(1.2px 1.2px at 96px 18px,   rgba(255,255,255,.60), transparent 55%),
+      radial-gradient(2.2px 2.2px at 150px 140px, rgba(180,220,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 44px 110px,  rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.5px 1.5px at 190px 64px,  rgba(255,255,255,.90), transparent 55%),
+      radial-gradient(1px   1px   at 250px 160px, rgba(255,255,255,.40), transparent 55%),
+      radial-gradient(1.5px 1.5px at 30px 220px,  rgba(255,220,150,.70), transparent 55%),
+      radial-gradient(1px   1px   at 300px 250px, rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.3px 1.3px at 120px 40px,  rgba(255,255,255,.70), transparent 55%),
+      radial-gradient(1px   1px   at 210px 130px, rgba(150,200,255,.50), transparent 55%),
+      radial-gradient(1.6px 1.6px at 60px 180px,  rgba(255,255,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 170px 90px,  rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.2px 1.2px at 280px 60px,  rgba(255,255,255,.60), transparent 55%),
+      radial-gradient(1.9px 1.9px at 100px 240px, rgba(255,200,120,.55), transparent 55%),
+      radial-gradient(1px   1px   at 230px 200px, rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.1px 1.1px at 320px 120px, rgba(220,240,255,.75), transparent 55%),
+      radial-gradient(1.4px 1.4px at 60px 280px,  rgba(255,255,255,.65), transparent 55%),
+      radial-gradient(1px   1px   at 140px 330px, rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.7px 1.7px at 260px 30px,  rgba(180,220,255,.75), transparent 55%),
+      radial-gradient(1px   1px   at 320px 210px, rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.3px 1.3px at 40px 150px,  rgba(255,220,150,.60), transparent 55%),
+      radial-gradient(1px   1px   at 200px 290px, rgba(255,255,255,.40), transparent 55%),
+      radial-gradient(1.5px 1.5px at 110px 70px,  rgba(255,255,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 290px 130px, rgba(200,230,255,.55), transparent 55%);
+    background-size:170px 160px, 140px 150px, 150px 130px, 110px 120px,
+                    180px 140px, 130px 110px, 160px 180px, 190px 150px,
+                    125px 100px, 150px 170px, 175px 125px, 120px 160px,
+                    155px 135px, 135px 150px, 190px 130px, 110px 140px,
+                    130px 150px, 160px 120px, 170px 150px, 180px 160px,
+                    140px 130px, 190px 170px, 150px 140px, 170px 180px;
+  }
+  a { color:#d9e8f5; }
+  #wrap { position:relative; z-index:1; padding:16px 18px; }
+  #state { font-size:22px; font-weight:700; margin:0 0 6px; color:#eef4fa; }
+  #det { font-size:13px; color:#8b95a3; margin:0 0 4px; }
+  #det b { color:#ffd226; font-weight:600; }
+  #cache { font-size:12px; color:#5c6672; margin:0 0 10px; min-height:14px; }
+  #cache.cacheok { color:#ffd226; }
+  .ok { color:#7fd0a0; } .bad { color:#ff6b5e; } .warn { color:#ffcf4d; }
+#brand { position:relative; z-index:1; text-align:center; padding:16px;
+           background:linear-gradient(160deg,#0b1826,#04101c);
+           border-bottom:2px solid #2a5a80;
+           box-shadow:0 0 18px rgba(0,120,255,.14); }
+  #brand a { text-decoration:none; }
+  #brand img { display:block; margin:0 auto 4px; width:100px; height:100px;
+               border-radius:50%; box-shadow:0 0 20px rgba(255,189,0,.4); }
+#brand b { display:block; font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
+              font-size:36px; font-weight:400; letter-spacing:.12em;
+              color:#ffbd00; text-shadow:0 0 14px rgba(255,189,0,.4); }
+   #brand .sub { display:block; font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
+              font-size:18px; font-weight:400; letter-spacing:.22em; margin-top:2px;
+              color:#ff8fb9; text-shadow:0 0 10px rgba(255,79,163,.4); }
+  #foot { position:fixed; left:0; right:0; bottom:6px; text-align:center;
+          font-size:12px; color:#5c6672; letter-spacing:.06em;
+          pointer-events:none; line-height:1.6; z-index:2; }
+  #foot b { color:#9fb3d0; font-weight:600; }
+  #foot a { color:#ffbd00; text-decoration:none; pointer-events:auto; }
+  #foot .hint { color:#4c5560; font-style:italic; margin-left:4px; }
+</style>
+</head>
+<body>
+<div id="brand">
+<a href="https://nxvtools.novaxverse.workers.dev/" target="_blank" rel="noopener">
+    <img src="logo9.png" alt="NovaXVerse">
+    <b>GOLDHEN PS4 13.02 - 13.52</b>
+    <span class="sub">GoldHen v2.4b18.12</span>
+  </a>
+</div>
+<div id="wrap">
+  <div id="state">detecting firmware...</div>
+  <div id="det"></div>
+  <div id="cache"></div>
+</div>
+
+<script>
+(function () {
+    var stateEl = document.getElementById("state");
+    var detEl = document.getElementById("det");
+    var cacheEl = document.getElementById("cache");
+    function setState(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }
+    function setCache(t, ok) { cacheEl.textContent = t; cacheEl.className = ok ? "cacheok" : ""; }
+    var params = new URLSearchParams(location.search);
+
+    // Firmwares this build has a MEASURED kernel table for. jb.js still runs its
+    // own kernel-table-present gate, so this is UX only -- an unlisted firmware
+    // can still be launched with a tap. KEEP IN SYNC with ps4_offsets.js: add a
+    // fwnum here in the SAME commit that fills that firmware's kernel RVAs.
+    // The PS4 reports its minor as two hex digits in the UA (13.52 -> minor 0x52).
+    var SUPPORTED = { 1302: 1, 1304: 1, 1350: 1, 1352: 1 }; // all measured on hardware
+
+    var key = null, fwnum = null;
+    var m = /PlayStation\s+4[\/ ](\d+)\.(\d+)/.exec(navigator.userAgent);
+    if (m) {
+        var ms = parseInt(m[2], 16).toString(16);
+        if (ms.length < 2) ms = "0" + ms;
+        key = m[1] + "." + ms;
+        fwnum = parseInt(m[1], 10) * 100 + parseInt(ms, 10);
+    }
+
+    var forced = params.get("force") === "1";
+    var supported = forced || (fwnum !== null && SUPPORTED[fwnum] === 1);
+    detEl.innerHTML = "firmware <b>" + (key || "unknown") + "</b>"
+        + (supported ? " &middot; <b>supported</b>"
+                     : " &middot; not in this build's kernel table");
+
+    var target = "jb.html" + location.search;
+    if (!params.has("ps4debug")) {
+        target += (target.indexOf("?") === -1 ? "?" : "&") + "ps4debug=0";
+    }
+    function go() { setState("loading jailbreak...", "warn"); location.replace(target); }
+
+    function waitForTap(msg, action) {
+        setState(msg, "warn");
+        function fire() {
+            window.removeEventListener("click", fire);
+            window.removeEventListener("keydown", fire);
+            action();
+        }
+        window.addEventListener("click", fire);
+        window.addEventListener("keydown", fire);
+    }
+
+    // Off-target consoles are not launched automatically -- one tap still runs
+    // it, so a user-agent quirk on the real 13.52 console can never lock it out.
+    if (!supported) {
+        setState("UNSUPPORTED FIRMWARE", "bad");
+        waitForTap("UNSUPPORTED (" + (key || "unknown") + ") -- press X or tap to run anyway", go);
+        return;
+    }
+
+    var ac = window.applicationCache;
+    if (!ac || !document.documentElement.hasAttribute("manifest")) {
+        go();
+    } else if (!navigator.onLine) {
+        setCache("offline -- from cache", true);
+        go();
+    } else if (ac.status === ac.IDLE) {
+        setCache("cached", true);
+        go();
+    } else if (ac.status === ac.UPDATEREADY) {
+        try { ac.swapCache(); } catch (e) {}
+        setCache("update downloaded", true);
+        waitForTap("UPDATE READY -- press X or tap to reload & run",
+                   function () { location.reload(); });
+    } else {
+        setCache("checking cache...");
+        ac.addEventListener("downloading",
+            function () { setCache("caching for offline (first run)..."); }, false);
+        ac.addEventListener("progress", function (e) {
+            if (e && e.total)
+                setCache("caching " + Math.round((e.loaded / e.total) * 100) + "%");
+        }, false);
+        ac.addEventListener("cached", function () {
+            setCache("cached for offline use", true);
+            waitForTap("CACHED (first run) -- press X or tap to run", go);
+        }, false);
+        ac.addEventListener("updateready", function () {
+            try { ac.swapCache(); } catch (e) {}
+            setCache("update downloaded", true);
+            waitForTap("UPDATE READY -- press X or tap to reload & run",
+                       function () { location.reload(); });
+        }, false);
+        ac.addEventListener("noupdate", function () {
+            setCache("cached -- offline ready", true);
+            go();
+        }, false);
+        ac.addEventListener("error", function () {
+            setCache("cache unavailable");
+            waitForTap("CACHE FAILED -- press X or tap to run anyway", go);
+        }, false);
+        ac.addEventListener("obsolete", function () {
+            setCache("cache obsolete");
+            waitForTap("CACHE OBSOLETE -- press X or tap to run", go);
+        }, false);
+    }
+})();
+</script>
+<div id="foot">
+  <b>NOVAXVERSE</b> &middot;
+  <a href="https://www.youtube.com/@novax_verse" target="_blank" rel="noopener">YouTube</a> &middot;
+  <a href="https://x.com/NovaXverse" target="_blank" rel="noopener">X</a> &middot;
+  <a href="https://nxvtools.novaxverse.workers.dev/" target="_blank" rel="noopener">Central Tools PS4</a>
+</div>
+</body>
+</html>

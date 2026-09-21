@@ -1,0 +1,169 @@
+<html manifest="cache.appcache">
+<head>
+<meta charset="utf-8">
+<title>NovaXVerse · GoldHen PS4 13.02 - 13.52</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+html, body {
+    min-height:100%;
+    background:linear-gradient(180deg,#03060d 0%,#06111f 55%,#03060d 100%);
+    background-attachment:fixed;
+    color:#e6ebf2;
+    font:15px/1.45 "Segoe UI", system-ui, sans-serif;
+    text-align:center;
+    margin:0;
+    overflow:hidden;
+}
+/* ===== FONDO GALAXIA: estrellas estáticas (muy ligeras) ===== */
+body::after {
+    content:"";
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(1.8px 1.8px at 22px 32px,   rgba(255,255,255,.85), transparent 55%),
+      radial-gradient(1.2px 1.2px at 96px 18px,   rgba(255,255,255,.60), transparent 55%),
+      radial-gradient(2.2px 2.2px at 150px 140px, rgba(180,220,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 44px 110px,  rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.5px 1.5px at 190px 64px,  rgba(255,255,255,.90), transparent 55%),
+      radial-gradient(1px   1px   at 250px 160px, rgba(255,255,255,.40), transparent 55%),
+      radial-gradient(1.5px 1.5px at 30px 220px,  rgba(255,220,150,.70), transparent 55%),
+      radial-gradient(1px   1px   at 300px 250px, rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.3px 1.3px at 120px 40px,  rgba(255,255,255,.70), transparent 55%),
+      radial-gradient(1px   1px   at 210px 130px, rgba(150,200,255,.50), transparent 55%),
+      radial-gradient(1.6px 1.6px at 60px 180px,  rgba(255,255,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 170px 90px,  rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.2px 1.2px at 280px 60px,  rgba(255,255,255,.60), transparent 55%),
+      radial-gradient(1.9px 1.9px at 100px 240px, rgba(255,200,120,.55), transparent 55%),
+      radial-gradient(1px   1px   at 230px 200px, rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.1px 1.1px at 320px 120px, rgba(220,240,255,.75), transparent 55%),
+      radial-gradient(1.4px 1.4px at 60px 280px,  rgba(255,255,255,.65), transparent 55%),
+      radial-gradient(1px   1px   at 140px 330px, rgba(255,255,255,.45), transparent 55%),
+      radial-gradient(1.7px 1.7px at 260px 30px,  rgba(180,220,255,.75), transparent 55%),
+      radial-gradient(1px   1px   at 320px 210px, rgba(255,255,255,.50), transparent 55%),
+      radial-gradient(1.3px 1.3px at 40px 150px,  rgba(255,220,150,.60), transparent 55%),
+      radial-gradient(1px   1px   at 200px 290px, rgba(255,255,255,.40), transparent 55%),
+      radial-gradient(1.5px 1.5px at 110px 70px,  rgba(255,255,255,.80), transparent 55%),
+      radial-gradient(1px   1px   at 290px 130px, rgba(200,230,255,.55), transparent 55%);
+    background-size:170px 160px, 140px 150px, 150px 130px, 110px 120px,
+                    180px 140px, 130px 110px, 160px 180px, 190px 150px,
+                    125px 100px, 150px 170px, 175px 125px, 120px 160px,
+                    155px 135px, 135px 150px, 190px 130px, 110px 140px,
+                    130px 150px, 160px 120px, 170px 150px, 180px 160px,
+                    140px 130px, 190px 170px, 150px 140px, 170px 180px;
+}
+#brand {
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:16px;
+    background:linear-gradient(160deg,#0b1826,#04101c);
+    border-bottom:2px solid #2a5a80;
+    box-shadow:0 0 18px rgba(0,120,255,.14);
+}
+#brand a { text-decoration:none; }
+#brand img {
+    display:block; margin:0 auto 4px; width:100px; height:100px; border-radius:50%;
+    box-shadow:0 0 20px rgba(255,189,0,.4);
+}
+#brand b {
+    display:block;
+    font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-size:36px; font-weight:400; letter-spacing:.12em;
+    color:#ffbd00; text-shadow:0 0 14px rgba(255,189,0,.4);
+}
+#brand .sub {
+    display:block;
+    font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-size:18px; font-weight:400; letter-spacing:.22em; margin-top:2px;
+    color:#ff8fb9; text-shadow:0 0 10px rgba(255,79,163,.4);
+}
+.info {
+    position:absolute;
+    top:50%;
+    left:50%;
+    font-family:Consolas, monospace;
+    font-size:16px;
+    color:#c8ced8;
+    transform:translate(-50%, -50%);
+    letter-spacing:.04em;
+    white-space:nowrap;
+    z-index:2;
+}
+.info b { color:#ffd226; font-weight:600; }
+</style>
+<script>
+/*
+ * Cache primer.
+ *
+ * Every asset the exploit chain needs (jb.js, core.js, mem.js, int64.js,
+ * ps4_offsets.js, rpc_worker.js, hen.bin, goldhen.bin, ps4debug.bin,
+ * patches/*.bin) is listed in cache.appcache. If a user lands on
+ * index.html directly, the exploit starts BEFORE those downloads finish
+ * and any fetch(PAYLOAD_FILE) during the run is a live network fetch --
+ * an extra chance for a mid-exploit stall on a flaky Wi-Fi.
+ *
+ * cache.html sits in front of that: it does nothing but download the
+ * manifest with visible progress, then reload the tab. The reload
+ * re-triggers AppCache, but this time every entry is already in the
+ * on-console cache -- index.html loads instant, jb.js does the same,
+ * and every fetch inside the exploit becomes a local read.
+ *
+ * The history-stack collapse below is copied from the mansoor0x/polpNO
+ * variant of this pattern: WebKit's back-forward cache can hold onto
+ * a stale-primed exploit state from a previous run, and wiping the
+ * history entries before the reload makes the second load look like a
+ * fresh navigation.
+ */
+
+// Swap the visible URL to index.html without navigating -- so when the
+// AppCache-completion handler below calls location.reload(), the reload
+// actually hits index.html (the exploit page), not this page.
+history.replaceState(null, null, 'index.html');
+
+// Collapse the tab history so back-button behaviour is clean and WebKit
+// isn't holding references to an earlier navigation state.
+var histlength = history.length;
+try { history.go(-histlength); } catch (e) {}
+
+function DLProgress(e) {
+    var msgs = document.getElementById("msgs");
+    if (!msgs) return;
+    var pct = e.total ? Math.round(e.loaded / e.total * 100) : 0;
+    msgs.innerHTML = "NovaXVerse &middot; Instalando ... <b>" + pct + "%</b>";
+}
+
+function DisplayCacheProgress() {
+    var msgs = document.getElementById("msgs");
+    setTimeout(function () {
+        if (msgs) msgs.innerHTML = "NovaXVerse &middot; <b>Caché OK</b>";
+    }, 1500);
+    setTimeout(function () {
+        location.reload();
+    }, 2500);
+}
+
+if (window.applicationCache) {
+    window.applicationCache.addEventListener("progress", DLProgress, false);
+    window.applicationCache.oncached = function () { DisplayCacheProgress(); };
+    window.applicationCache.onupdateready = function () { DisplayCacheProgress(); };
+    // If the cache is already there (repeat visit) neither event fires -- just
+    // hand off to the exploit page.
+    window.applicationCache.addEventListener("noupdate", function () {
+        setTimeout(function () { location.reload(); }, 200);
+    }, false);
+}
+</script>
+</head>
+<body>
+<div id="brand">
+    <a href="https://nxvtools.novaxverse.workers.dev/" target="_blank" rel="noopener">
+        <img src="logo9.png" alt="NovaXVerse"><b>GOLDHEN PS4 13.02 - 13.52</b><span class="sub">GoldHen v2.4b18.12</span>
+    </a>
+</div>
+<div id="msgs" class="info">NovaXVerse &middot; Preparando caché ...</div>
+</body>
+</html>
