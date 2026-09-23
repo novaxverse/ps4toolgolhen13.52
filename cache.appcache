@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# rev 20260921-novaxverse-goldhen-v2-d
+# rev 20260921-novaxverse-goldhen-v2-e
 
 index.html #a8bf9e92d7cf0b796b7ba6c26e00bc5b22b6dbeaa0d826e845d1897489e396be
 cache.html #745aa77e38431f6ad731ea94f581aca3e46de4621df2356df4541dc711e560a9
@@ -28,5 +28,4 @@ NETWORK:
 
 FALLBACK:
 index.html index.html
-cache.html
 jb.html jb.html
