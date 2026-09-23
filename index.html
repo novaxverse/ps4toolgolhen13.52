@@ -69,11 +69,16 @@
 #brand b { display:block; font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
               font-size:36px; font-weight:400; letter-spacing:.12em;
               color:#ffbd00; text-shadow:0 0 14px rgba(255,189,0,.4); }
-   #brand .sub { display:block; font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
-              font-size:18px; font-weight:400; letter-spacing:.22em; margin-top:2px;
-              color:#ff8fb9; text-shadow:0 0 10px rgba(255,79,163,.4); }
-  #foot { position:fixed; left:0; right:0; bottom:6px; text-align:center;
-          font-size:12px; color:#5c6672; letter-spacing:.06em;
+   #brand .sub { display:inline-block; margin-top:6px; font-family:'Bebas Neue', Arial, Helvetica, sans-serif;
+              font-size:23px; font-weight:400; letter-spacing:.14em; line-height:1;
+              color:#0b0f14; background:linear-gradient(145deg,#ffd226,#f0a900);
+              border-radius:999px; padding:6px 18px 7px;
+              box-shadow:0 0 16px rgba(255,189,0,.55);
+              animation:subpulse 1.6s ease-in-out infinite; }
+   @keyframes subpulse { 0%,100% { transform:scale(1); }
+              50% { transform:scale(1.07); box-shadow:0 0 26px rgba(255,189,0,.9); } }
+#foot { position:fixed; left:0; right:0; bottom:6px; text-align:center;
+           font-size:14px; color:#5c6672; letter-spacing:.06em;
           pointer-events:none; line-height:1.6; z-index:2; }
   #foot b { color:#9fb3d0; font-weight:600; }
   #foot a { color:#ffbd00; text-decoration:none; pointer-events:auto; }
@@ -84,7 +89,7 @@
 <div id="brand">
 <a href="https://nxvtools.novaxverse.workers.dev/" target="_blank" rel="noopener">
     <img src="logo9.png" alt="NovaXVerse">
-    <b>GOLDHEN PS4 13.02 - 13.52</b>
+    <b>PS4 13.02 - 13.04 - 13.50 - 13.52</b>
     <span class="sub">GoldHen v2.4b18.12</span>
   </a>
 </div>
@@ -195,9 +200,7 @@
 })();
 </script>
 <div id="foot">
-  <b>NOVAXVERSE</b> &middot;
-  <a href="https://www.youtube.com/@novax_verse" target="_blank" rel="noopener">YouTube</a> &middot;
-  <a href="https://x.com/NovaXverse" target="_blank" rel="noopener">X</a> &middot;
+<b>NOVAXVERSE</b> &middot;
   <a href="https://nxvtools.novaxverse.workers.dev/" target="_blank" rel="noopener">Central Tools PS4</a>
 </div>
 </body>
