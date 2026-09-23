@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.appcache">
+<html lang="es" manifest="cache.appcache">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -121,12 +121,12 @@
 
     var forced = params.get("force") === "1";
     var supported = forced || (fwnum !== null && SUPPORTED[fwnum] === 1);
-    detEl.innerHTML = "firmware <b>" + (key || "unknown") + "</b>"
-        + (supported ? " &middot; <b>supported</b>"
-                     : " &middot; not in this build's kernel table");
+    detEl.innerHTML = "sistema <b>" + (key || "desconocido") + "</b>"
+        + (supported ? " &middot; <b>soportado</b>"
+                     : " &middot; no está en la tabla de kernel de este build");
 
     var target = "jb.html" + location.search;
-    function go() { setState("loading jailbreak...", "warn"); location.replace(target); }
+    function go() { setState("cargando jailbreak...", "warn"); location.replace(target); }
 
     function waitForTap(msg, action) {
         setState(msg, "warn");
@@ -142,8 +142,8 @@
     // Off-target consoles are not launched automatically -- one tap still runs
     // it, so a user-agent quirk on the real 13.52 console can never lock it out.
     if (!supported) {
-        setState("UNSUPPORTED FIRMWARE", "bad");
-        waitForTap("UNSUPPORTED (" + (key || "unknown") + ") -- press X or tap to run anyway", go);
+        setState("FIRMWARE NO SOPORTADO", "bad");
+        waitForTap("NO SOPORTADO (" + (key || "desconocido") + ") -- pulsa X o toca para ejecutar igualmente", go);
         return;
     }
 
@@ -151,45 +151,45 @@
     if (!ac || !document.documentElement.hasAttribute("manifest")) {
         go();
     } else if (!navigator.onLine) {
-        setCache("offline -- from cache", true);
+        setCache("sin conexión -- desde caché", true);
         go();
     } else if (ac.status === ac.IDLE) {
-        setCache("cached", true);
+        setCache("en caché", true);
         go();
     } else if (ac.status === ac.UPDATEREADY) {
         try { ac.swapCache(); } catch (e) {}
-        setCache("update downloaded", true);
-        waitForTap("UPDATE READY -- press X or tap to reload & run",
+        setCache("actualización descargada", true);
+        waitForTap("ACTUALIZACIÓN LISTA -- pulsa X o toca para recargar y ejecutar",
                    function () { location.reload(); });
     } else {
-        setCache("checking cache...");
+        setCache("comprobando caché...");
         ac.addEventListener("downloading",
-            function () { setCache("caching for offline (first run)..."); }, false);
+            function () { setCache("guardando en caché (primera vez)..."); }, false);
         ac.addEventListener("progress", function (e) {
             if (e && e.total)
-                setCache("caching " + Math.round((e.loaded / e.total) * 100) + "%");
+                setCache("guardando " + Math.round((e.loaded / e.total) * 100) + "%");
         }, false);
         ac.addEventListener("cached", function () {
-            setCache("cached for offline use", true);
-            waitForTap("CACHED (first run) -- press X or tap to run", go);
+            setCache("guardado en caché para uso sin conexión", true);
+            waitForTap("EN CACHÉ (primera vez) -- pulsa X o toca para ejecutar", go);
         }, false);
         ac.addEventListener("updateready", function () {
             try { ac.swapCache(); } catch (e) {}
-            setCache("update downloaded", true);
-            waitForTap("UPDATE READY -- press X or tap to reload & run",
+            setCache("actualización descargada", true);
+            waitForTap("ACTUALIZACIÓN LISTA -- pulsa X o toca para recargar y ejecutar",
                        function () { location.reload(); });
         }, false);
         ac.addEventListener("noupdate", function () {
-            setCache("cached -- offline ready", true);
+            setCache("en caché -- listo sin conexión", true);
             go();
         }, false);
         ac.addEventListener("error", function () {
-            setCache("cache unavailable");
-            waitForTap("CACHE FAILED -- press X or tap to run anyway", go);
+            setCache("caché no disponible");
+            waitForTap("FALLO DE CACHÉ -- pulsa X o toca para ejecutar igualmente", go);
         }, false);
         ac.addEventListener("obsolete", function () {
-            setCache("cache obsolete");
-            waitForTap("CACHE OBSOLETE -- press X or tap to run", go);
+            setCache("caché obsoleta");
+            waitForTap("CACHÉ OBSOLETA -- pulsa X o toca para ejecutar", go);
         }, false);
     }
 })();
