@@ -122,9 +122,6 @@
                      : " &middot; not in this build's kernel table");
 
     var target = "jb.html" + location.search;
-    if (!params.has("ps4debug")) {
-        target += (target.indexOf("?") === -1 ? "?" : "&") + "ps4debug=0";
-    }
     function go() { setState("loading jailbreak...", "warn"); location.replace(target); }
 
     function waitForTap(msg, action) {
